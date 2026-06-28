@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penilaian Mandiri Kesiapan Teknologi (TRI 2.0)</title>
+<style>
+  :root{
+    --navy:#0f2747;
+    --navy-2:#1b3a63;
+    --blue:#2563eb;
+    --blue-soft:#e8f0fe;
+    --gray-900:#1f2937;
+    --gray-700:#374151;
+    --gray-500:#6b7280;
+    --gray-300:#d1d5db;
+    --gray-200:#e5e7eb;
+    --gray-100:#f3f4f6;
+    --bg:#f4f6f9;
+    --white:#ffffff;
+    --green:#16a34a;
+    --amber:#d97706;
+    --red:#dc2626;
+    --radius:14px;
+    --shadow:0 6px 24px rgba(15,39,71,.10);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--gray-900);
+    line-height:1.55;
+    font-size:17px;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:18px 16px 60px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:24px 20px;
+    margin-bottom:18px;
+  }
+  h1{
+    font-size:1.5rem;
+    line-height:1.25;
+    margin:0 0 10px;
+    color:var(--navy);
+  }
+  h2{
+    font-size:1.2rem;
+    margin:0 0 12px;
+    color:var(--navy);
+  }
+  h3{
+    font-size:1.02rem;
+    margin:0 0 8px;
+    color:var(--navy-2);
+  }
+  p{margin:0 0 12px;}
+  .muted{color:var(--gray-500);font-size:.92rem;}
+  .lead{color:var(--gray-700);}
+  .brandbar{
+    height:6px;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--navy),var(--blue));
+    margin-bottom:18px;
+  }
+
+  /* Form fields */
+  label.field{display:block;margin-bottom:16px;font-weight:600;color:var(--gray-700);font-size:.96rem;}
+  input[type="text"],select{
+    width:100%;
+    margin-top:6px;
+    padding:12px 14px;
+    font-size:1rem;
+    border:1.5px solid var(--gray-300);
+    border-radius:10px;
+    background:var(--white);
+    color:var(--gray-900);
+    font-family:inherit;
+  }
+  input[type="text"]:focus,select:focus{
+    outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft);
+  }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    padding:15px 18px;
+    font-size:1.05rem;
+    font-weight:700;
+    font-family:inherit;
+    border:none;border-radius:12px;
+    background:var(--navy);
+    color:#fff;
+    cursor:pointer;
+    transition:background .15s,transform .05s,opacity .15s;
+  }
+  .btn:hover{background:var(--navy-2);}
+  .btn:active{transform:translateY(1px);}
+  .btn:disabled{background:var(--gray-300);color:#fff;cursor:not-allowed;}
+  .btn.secondary{background:var(--white);color:var(--navy);border:1.5px solid var(--gray-300);}
+  .btn.secondary:hover{background:var(--gray-100);}
+
+  /* Scale legend */
+  .legend{
+    background:var(--blue-soft);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:18px;
+    font-size:.9rem;
+    color:var(--navy-2);
+  }
+  .legend strong{display:block;margin-bottom:4px;color:var(--navy);}
+  .legend ul{margin:0;padding-left:18px;}
+  .legend li{margin:2px 0;}
+
+  /* Progress */
+  .progress-wrap{
+    position:sticky;top:0;z-index:20;
+    background:var(--bg);
+    padding:10px 0 8px;
+    margin:-6px 0 8px;
+  }
+  .progress-track{height:10px;background:var(--gray-200);border-radius:999px;overflow:hidden;}
+  .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--navy));transition:width .25s;}
+  .progress-text{font-size:.85rem;color:var(--gray-500);margin-top:6px;text-align:right;}
+
+  /* Sections + questions */
+  .section{margin-bottom:8px;}
+  .section-head{
+    display:flex;align-items:center;gap:10px;
+    margin:22px 0 10px;
+  }
+  .section-num{
+    flex:none;
+    width:30px;height:30px;border-radius:8px;
+    background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:.95rem;
+  }
+  .section-title{font-weight:700;color:var(--navy);font-size:1.02rem;}
+
+  .question{
+    border:1.5px solid var(--gray-200);
+    border-radius:12px;
+    padding:14px 14px 12px;
+    margin-bottom:12px;
+    transition:border-color .15s,background .15s;
+  }
+  .question.answered{border-color:#bcdca8;background:#fafdf7;}
+  .question.unanswered-flag{border-color:var(--red);background:#fff6f6;}
+  .q-text{margin:0 0 12px;font-size:1rem;color:var(--gray-900);}
+  .q-num{font-weight:700;color:var(--blue);margin-right:4px;}
+
+  .likert{display:flex;gap:6px;}
+  .opt{flex:1;cursor:pointer;}
+  .opt input{position:absolute;opacity:0;width:0;height:0;}
+  .opt span{
+    display:flex;align-items:center;justify-content:center;
+    height:46px;
+    border:1.5px solid var(--gray-300);
+    border-radius:10px;
+    font-weight:700;font-size:1.05rem;
+    color:var(--gray-700);
+    background:var(--white);
+    transition:all .12s;
+    user-select:none;
+  }
+  .opt:hover span{border-color:var(--blue);}
+  .opt input:checked + span{
+    background:var(--blue);border-color:var(--blue);color:#fff;
+    box-shadow:0 2px 8px rgba(37,99,235,.35);
+  }
+  .opt input:focus-visible + span{box-shadow:0 0 0 3px var(--blue-soft);}
+  .scale-ends{display:flex;justify-content:space-between;margin-top:6px;font-size:.74rem;color:var(--gray-500);}
+
+  .validation-msg{
+    color:var(--red);font-size:.9rem;font-weight:600;margin:10px 0 0;
+    display:none;
+  }
+  .validation-msg.show{display:block;}
+
+  /* Results */
+  .scorebar{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;
+  }
+  .score{
+    text-align:center;
+    border-radius:12px;
+    padding:14px 8px;
+    background:var(--gray-100);
+    border:1.5px solid var(--gray-200);
+  }
+  .score .label{font-size:.78rem;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
+  .score .val{font-size:1.7rem;font-weight:800;color:var(--navy);line-height:1.1;margin-top:4px;}
+  .score .sub{font-size:.78rem;color:var(--gray-500);margin-top:2px;}
+  .score.tri{background:var(--navy);border-color:var(--navy);}
+  .score.tri .label{color:#cdd9ec;}
+  .score.tri .val{color:#fff;}
+  .score.tri .sub{color:#fff;font-weight:700;}
+
+  .persona-card{
+    border-radius:12px;
+    padding:16px 16px 6px;
+    margin-bottom:18px;
+    border:1.5px solid var(--gray-200);
+    border-left-width:7px;
+  }
+  .persona-tag{display:inline-block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:999px;color:#fff;margin-bottom:8px;}
+  .persona-card h2{margin-bottom:6px;}
+  .persona-card .en{font-weight:600;color:var(--gray-500);font-size:.95rem;}
+
+  .chart-card svg{width:100%;height:auto;display:block;}
+  .chart-hint{font-size:.84rem;color:var(--gray-500);margin-top:10px;text-align:center;}
+
+  .rec-list{margin:6px 0 0;padding-left:0;list-style:none;}
+  .rec-list li{
+    position:relative;padding:10px 12px 10px 40px;margin-bottom:8px;
+    background:var(--gray-100);border-radius:10px;font-size:.98rem;
+  }
+  .rec-list li::before{
+    content:"✓";
+    position:absolute;left:12px;top:50%;transform:translateY(-50%);
+    width:20px;height:20px;border-radius:50%;
+    background:var(--navy);color:#fff;font-size:.75rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .summary-box{
+    background:var(--gray-100);border:1px dashed var(--gray-300);
+    border-radius:10px;padding:12px 14px;font-size:.9rem;color:var(--gray-700);
+  }
+  .summary-box .row{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px solid var(--gray-200);}
+  .summary-box .row:last-child{border-bottom:none;}
+  .summary-box .row span:first-child{color:var(--gray-500);}
+  .summary-box .row span:last-child{font-weight:600;text-align:right;}
+
+  .disclaimer{font-size:.8rem;color:var(--gray-500);line-height:1.5;margin-top:18px;border-top:1px solid var(--gray-200);padding-top:14px;}
+
+  .screen{display:none;}
+  .screen.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .footer-note{text-align:center;font-size:.78rem;color:var(--gray-500);margin-top:8px;}
+
+  @media (max-width:480px){
+    body{font-size:16px;}
+    .wrap{padding:14px 12px 50px;}
+    .card{padding:20px 16px;}
+    h1{font-size:1.32rem;}
+    .opt span{height:44px;font-size:1rem;}
+    .score .val{font-size:1.45rem;}
+    .scorebar{gap:8px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brandbar"></div>
+
+  <!-- ===================== LAYAR 1: PEMBUKA ===================== -->
+  <section id="screen-intro" class="screen active">
+    <div class="card">
+      <h1>Penilaian Mandiri Kesiapan Teknologi (TRI 2.0)</h1>
+      <p class="lead">Penilaian singkat ini membantu Anda mengenali tingkat kesiapan pribadi dalam mengadopsi teknologi baru di tempat kerja, khususnya sistem <em>Condition Monitoring</em> berbasis kecerdasan buatan di pabrik <em>metal stamping</em>. Anda akan menjawab 16 pernyataan, lalu memperoleh skor, persona kesiapan teknologi, dan rekomendasi langkah pengembangan. Pengisian hanya membutuhkan waktu sekitar 3–5 menit.</p>
+
+      <label class="field">Nama / ID Pekerja <span class="muted">(opsional)</span>
+        <input type="text" id="inp-name" placeholder="Mis. Budi S. / NIK 12345" autocomplete="off">
+      </label>
+
+      <label class="field">Divisi <span class="muted">(opsional)</span>
+        <select id="inp-div">
+          <option value="">— Pilih divisi —</option>
+          <option value="Welding">Welding</option>
+          <option value="Stamping">Stamping</option>
+          <option value="Maintenance">Maintenance</option>
+          <option value="ICT">ICT</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </label>
+
+      <button class="btn" id="btn-start">Mulai Penilaian →</button>
+      <p class="footer-note">Data hanya diproses di perangkat Anda dan tidak dikirim ke server mana pun.</p>
+    </div>
+  </section>
+
+  <!-- ===================== LAYAR 2: KUESIONER ===================== -->
+  <section id="screen-quiz" class="screen">
+    <div class="card">
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-text" id="progress-text">0 dari 16 pernyataan dijawab</div>
+      </div>
+
+      <h2>Kuesioner Kesiapan Teknologi</h2>
+      <div class="legend">
+        <strong>Petunjuk:</strong> Untuk setiap pernyataan, pilih angka yang paling sesuai dengan diri Anda.
+        <ul>
+          <li><strong>1</strong> = Sangat Tidak Setuju</li>
+          <li><strong>2</strong> = Tidak Setuju</li>
+          <li><strong>3</strong> = Netral</li>
+          <li><strong>4</strong> = Setuju</li>
+          <li><strong>5</strong> = Sangat Setuju</li>
+        </ul>
+      </div>
+
+      <form id="quiz-form"><!-- diisi oleh JavaScript --></form>
+
+      <p class="validation-msg" id="validation-msg">Mohon jawab semua pernyataan terlebih dahulu. Pernyataan yang belum dijawab ditandai dengan warna merah.</p>
+      <button class="btn" id="btn-result" disabled>Lihat Hasil →</button>
+      <button class="btn secondary" id="btn-back-intro" style="margin-top:10px;">← Kembali</button>
+    </div>
+  </section>
+
+  <!-- ===================== LAYAR 3: HASIL ===================== -->
+  <section id="screen-result" class="screen">
+    <div class="card">
+      <h2>Hasil Penilaian Anda</h2>
+
+      <div class="scorebar">
+        <div class="score"><div class="label">Motivator</div><div class="val" id="r-mot">–</div><div class="sub">Optimism + Innovativeness</div></div>
+        <div class="score"><div class="label">Inhibitor*</div><div class="val" id="r-inh">–</div><div class="sub">*reversed</div></div>
+        <div class="score tri"><div class="label">TRI Index</div><div class="val" id="r-tri">–</div><div class="sub" id="r-tri-cat">–</div></div>
+      </div>
+
+      <div class="persona-card" id="persona-card">
+        <span class="persona-tag" id="persona-tag">PERSONA</span>
+        <h2 id="persona-name">–</h2>
+        <div class="en" id="persona-en"></div>
+        <p id="persona-desc" style="margin-top:8px;"></p>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <h3>Posisi Anda dalam Kuadran Kesiapan</h3>
+      <p class="muted" style="margin-bottom:8px;">Sumbu mendatar menunjukkan tingkat hambatan psikologis (semakin ke kanan = hambatan semakin rendah). Sumbu tegak menunjukkan motivasi terhadap teknologi (semakin ke atas = motivasi semakin tinggi).</p>
+      <div id="chart"></div>
+      <p class="chart-hint">Garis putus-putus adalah ambang baseline penelitian (Inhibitor-reversed = 3,125 dan Motivator = 3,750). Titik menandai posisi Anda.</p>
+    </div>
+
+    <div class="card">
+      <h3>Rekomendasi Langkah Pengembangan</h3>
+      <ul class="rec-list" id="rec-list"></ul>
+    </div>
+
+    <div class="card">
+      <h3>Ringkasan</h3>
+      <p class="muted" style="margin-bottom:10px;">Anda dapat menyimpan hasil ini dengan mengambil tangkapan layar (<em>screenshot</em>).</p>
+      <div class="summary-box" id="summary-box"></div>
+
+      <p class="disclaimer">
+        Klasifikasi persona ini menggunakan ambang baseline yang diperoleh dari penelitian di PT Adyawinsa Stamping Industries (45 responden). Hasil bersifat indikatif sebagai dasar pengembangan sumber daya manusia dan bukan merupakan penilaian mutlak terhadap individu.
+      </p>
+
+      <button class="btn secondary" id="btn-reset" style="margin-top:16px;">↺ Isi Ulang</button>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Data: 16 pernyataan, 4 dimensi ---------- */
+  const ITEMS = [
+    {id:"OPT1", dim:"OPT", text:"Teknologi baru membuat pekerjaan saya menjadi lebih mudah dan efisien."},
+    {id:"OPT2", dim:"OPT", text:"Saya merasa lebih produktif dalam pekerjaan ketika menggunakan teknologi baru."},
+    {id:"OPT3", dim:"OPT", text:"Teknologi baru memberi saya lebih banyak kendali dalam pekerjaan sehari-hari."},
+    {id:"OPT4", dim:"OPT", text:"Teknologi meningkatkan kualitas pekerjaan dan hasil kerja saya secara nyata."},
+
+    {id:"INN1", dim:"INN", text:"Rekan kerja saya sering meminta pendapat saya tentang teknologi baru."},
+    {id:"INN2", dim:"INN", text:"Saya cenderung menjadi orang pertama di antara rekan kerja yang mencoba teknologi baru."},
+    {id:"INN3", dim:"INN", text:"Saya biasanya dapat memahami cara kerja teknologi baru tanpa banyak bantuan orang lain."},
+    {id:"INN4", dim:"INN", text:"Saya selalu mengikuti perkembangan teknologi terbaru yang relevan dengan pekerjaan saya."},
+
+    {id:"DIS1", dim:"DIS", text:"Ketika teknologi baru bermasalah, saya merasa harus bergantung pada ahli teknis karena tidak bisa mengatasinya sendiri."},
+    {id:"DIS2", dim:"DIS", text:"Saya kesulitan memahami penjelasan teknis tentang cara kerja teknologi baru."},
+    {id:"DIS3", dim:"DIS", text:"Saya merasa teknologi baru di tempat kerja terlalu rumit untuk saya gunakan secara efektif."},
+    {id:"DIS4", dim:"DIS", text:"Saya rasa tidak tersedia panduan yang memadai untuk membantu saya menggunakan teknologi baru dengan benar."},
+
+    {id:"INS1", dim:"INS", text:"Saya khawatir ketergantungan berlebih pada teknologi baru justru dapat melemahkan kemampuan teknis saya sendiri."},
+    {id:"INS2", dim:"INS", text:"Saya tidak sepenuhnya percaya bahwa teknologi baru dapat membuat keputusan kerja yang tepat tanpa campur tangan manusia."},
+    {id:"INS3", dim:"INS", text:"Saya merasa kualitas pekerjaan akan menurun jika terlalu bergantung pada teknologi baru."},
+    {id:"INS4", dim:"INS", text:"Saya tidak merasa percaya diri mengoperasikan teknologi baru yang hanya bisa diakses melalui perangkat digital."}
+  ];
+
+  /* Pengelompokan tampilan (judul netral agar tidak membiaskan jawaban) */
+  const SECTIONS = [
+    {title:"Pandangan terhadap Teknologi", dims:["OPT"]},
+    {title:"Keterbukaan terhadap Teknologi Baru", dims:["INN"]},
+    {title:"Pengalaman Menggunakan Teknologi", dims:["DIS"]},
+    {title:"Keyakinan terhadap Teknologi", dims:["INS"]}
+  ];
+
+  const MOTIVATOR_DIMS = ["OPT","INN"];
+  const INHIBITOR_DIMS = ["DIS","INS"];
+
+  /* Ambang baseline TETAP dari penelitian */
+  const THRESH_MOT = 3.750;
+  const THRESH_INH = 3.125;
+
+  /* ---------- Data persona ---------- */
+  const PERSONAS = {
+    enthusiast:{
+      name:"Penggerak Teknologi",
+      en:"Enthusiast",
+      color:"#16a34a",
+      desc:"Memiliki motivasi tinggi terhadap teknologi dengan hambatan psikologis yang rendah. Kelompok paling siap mengadopsi teknologi baru.",
+      recs:[
+        "Dilibatkan sebagai agen perubahan (champion) yang membantu memperkenalkan sistem baru kepada rekan kerja.",
+        "Diberi pelatihan tingkat lanjut agar dapat menjadi rujukan teknis di unit kerjanya.",
+        "Dilibatkan sejak tahap awal dalam pelaksanaan pilot project sistem Condition Monitoring."
+      ]
+    },
+    cautious:{
+      name:"Adopter Hati-hati",
+      en:"Cautious Adopter",
+      color:"#2563eb",
+      desc:"Memiliki motivasi tinggi terhadap teknologi, namun masih menyimpan keraguan atau ketidaknyamanan tertentu. Terbuka terhadap teknologi bila didampingi.",
+      recs:[
+        "Diberi pelatihan teknis yang terstruktur untuk meningkatkan rasa percaya diri dalam menggunakan sistem.",
+        "Diberi pendampingan langsung pada masa awal penggunaan untuk mengurangi keraguan.",
+        "Diperkenalkan pada manfaat konkret teknologi melalui contoh penerapan yang relevan dengan pekerjaannya."
+      ]
+    },
+    passive:{
+      name:"Pasif",
+      en:"Passive",
+      color:"#d97706",
+      desc:"Hambatan psikologis rendah, namun motivasi terhadap teknologi belum tinggi. Cenderung mengikuti, tidak menolak namun juga tidak proaktif.",
+      recs:[
+        "Diberi sosialisasi mengenai manfaat dan tujuan penerapan teknologi agar tumbuh motivasi.",
+        "Didorong keterlibatannya melalui pelibatan bertahap dalam kegiatan terkait teknologi.",
+        "Diberi penguatan bahwa teknologi baru bertujuan mendukung, bukan menggantikan, peran mereka."
+      ]
+    },
+    skeptic:{
+      name:"Skeptis",
+      en:"Skeptic",
+      color:"#dc2626",
+      desc:"Motivasi terhadap teknologi rendah dan hambatan psikologis tinggi. Kelompok yang paling memerlukan pendampingan intensif.",
+      recs:[
+        "Diberi pendampingan intensif dan edukasi bertahap untuk menumbuhkan pemahaman dan kepercayaan.",
+        "Ditangani kekhawatirannya secara spesifik melalui komunikasi yang terbuka.",
+        "Diperkenalkan teknologi secara perlahan dimulai dari fungsi yang paling sederhana dan tidak mengancam."
+      ]
+    }
+  };
+
+  const SCALE_TEXT = {1:"Sangat Tidak Setuju",2:"Tidak Setuju",3:"Netral",4:"Setuju",5:"Sangat Setuju"};
+
+  /* ---------- Util ---------- */
+  const $ = (id)=>document.getElementById(id);
+  function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+  function fmt2(n){return n.toFixed(2).replace(".",",");}     // 2 desimal, koma
+  function fmt3(n){return n.toFixed(3).replace(".",",");}     // 3 desimal (ambang)
+
+  /* ---------- Bangun kuesioner ---------- */
+  function buildQuiz(){
+    const form = $("quiz-form");
+    let html = "";
+    let globalNum = 0;
+    SECTIONS.forEach((sec, si)=>{
+      html += '<div class="section">';
+      html += '<div class="section-head"><div class="section-num">'+(si+1)+'</div>'+
+              '<div class="section-title">'+esc(sec.title)+'</div></div>';
+      const secItems = ITEMS.filter(it=>sec.dims.indexOf(it.dim)>-1);
+      secItems.forEach(it=>{
+        globalNum++;
+        html += '<div class="question" id="q-'+it.id+'" data-qid="'+it.id+'">';
+        html += '<p class="q-text"><span class="q-num">'+globalNum+'.</span>'+esc(it.text)+'</p>';
+        html += '<div class="likert" role="radiogroup" aria-label="'+esc(it.text)+'">';
+        for(let v=1; v<=5; v++){
+          html += '<label class="opt" title="'+esc(SCALE_TEXT[v])+'">'+
+                    '<input type="radio" name="'+it.id+'" value="'+v+'" aria-label="'+v+' - '+esc(SCALE_TEXT[v])+'">'+
+                    '<span>'+v+'</span>'+
+                  '</label>';
+        }
+        html += '</div>';
+        html += '<div class="scale-ends"><span>Sangat Tidak Setuju</span><span>Sangat Setuju</span></div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    });
+    form.innerHTML = html;
+
+    form.addEventListener("change", function(e){
+      if(e.target && e.target.type==="radio"){
+        const q = document.getElementById("q-"+e.target.name);
+        if(q){ q.classList.add("answered"); q.classList.remove("unanswered-flag"); }
+        updateProgress();
+      }
+    });
+  }
+
+  function getAnswers(){
+    const ans = {};
+    ITEMS.forEach(it=>{
+      const sel = document.querySelector('input[name="'+it.id+'"]:checked');
+      ans[it.id] = sel ? parseInt(sel.value,10) : null;
+    });
+    return ans;
+  }
+
+  function countAnswered(ans){
+    return ITEMS.reduce((acc,it)=> acc + (ans[it.id]!=null?1:0), 0);
+  }
+
+  function updateProgress(){
+    const ans = getAnswers();
+    const n = countAnswered(ans);
+    const pct = Math.round(n/ITEMS.length*100);
+    $("progress-fill").style.width = pct+"%";
+    $("progress-text").textContent = n+" dari "+ITEMS.length+" pernyataan dijawab";
+    const done = (n===ITEMS.length);
+    $("btn-result").disabled = !done;
+    if(done){ $("validation-msg").classList.remove("show"); }
+  }
+
+  /* ---------- Perhitungan skor ---------- */
+  function computeScores(ans){
+    let motSum=0, motCnt=0, inhSum=0, inhCnt=0;
+    ITEMS.forEach(it=>{
+      const raw = ans[it.id];
+      if(MOTIVATOR_DIMS.indexOf(it.dim)>-1){
+        motSum += raw; motCnt++;                 // skor asli
+      } else {
+        inhSum += (6 - raw); inhCnt++;           // dibalik: 6 - skor
+      }
+    });
+    const motivator = motSum/motCnt;             // rata-rata 8 item motivator
+    const inhibitorRev = inhSum/inhCnt;          // rata-rata 8 item inhibitor (reversed)
+    const tri = (motivator + inhibitorRev)/2;
+    return {motivator, inhibitorRev, tri};
+  }
+
+  function triCategory(tri){
+    if(tri < 2.90) return "Rendah";
+    if(tri <= 3.50) return "Sedang";
+    return "Tinggi";
+  }
+
+  function classifyPersona(motivator, inhibitorRev){
+    const motHigh = motivator >= THRESH_MOT;
+    const inhHigh = inhibitorRev >= THRESH_INH;  // tinggi = hambatan psikologis rendah (baik)
+    if(motHigh && inhHigh) return "enthusiast";
+    if(motHigh && !inhHigh) return "cautious";
+    if(!motHigh && inhHigh) return "passive";
+    return "skeptic";
+  }
+
+  /* ---------- Diagram kuadran (SVG) ---------- */
+  function buildChart(motivator, inhibitorRev, personaKey){
+    const W=360, H=360;
+    const padL=46, padR=18, padT=18, padB=46;
+    const plotW = W - padL - padR;   // 296
+    const plotH = H - padT - padB;   // 296
+    const xMin=1, xMax=5, yMin=1, yMax=5;
+
+    const xPix = v => padL + (v - xMin)/(xMax - xMin) * plotW;
+    const yPix = v => padT + (yMax - v)/(yMax - yMin) * plotH;
+
+    const vx = xPix(THRESH_INH);   // garis vertikal (ambang inhibitor-rev)
+    const hy = yPix(THRESH_MOT);   // garis horizontal (ambang motivator)
+    const left=padL, right=padL+plotW, top=padT, bottom=padT+plotH;
+
+    // tints kuadran
+    const colEnt="#e7f6ec", colCau="#e8f0fe", colPas="#fdf3e3", colSke="#fdeaea";
+
+    const cx = xPix(inhibitorRev);
+    const cy = yPix(motivator);
+    const pColor = PERSONAS[personaKey].color;
+
+    // posisi label "Anda" agar tidak keluar kanvas
+    let labY = cy - 14; let labAnchor="middle";
+    if(labY < top+12) labY = cy + 22;
+    let labX = cx;
+    if(labX < left+22){ labX = left+22; }
+    if(labX > right-22){ labX = right-22; }
+
+    const svg = `
+<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Diagram kuadran posisi kesiapan teknologi">
+  <!-- latar kuadran -->
+  <rect x="${vx}" y="${top}" width="${right-vx}" height="${hy-top}" fill="${colEnt}"/>
+  <rect x="${left}" y="${top}" width="${vx-left}" height="${hy-top}" fill="${colCau}"/>
+  <rect x="${vx}" y="${hy}" width="${right-vx}" height="${bottom-hy}" fill="${colPas}"/>
+  <rect x="${left}" y="${hy}" width="${vx-left}" height="${bottom-hy}" fill="${colSke}"/>
+
+  <!-- bingkai plot -->
+  <rect x="${left}" y="${top}" width="${plotW}" height="${plotH}" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- garis ambang -->
+  <line x1="${vx}" y1="${top}" x2="${vx}" y2="${bottom}" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="${left}" y1="${hy}" x2="${right}" y2="${hy}" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+
+  <!-- label kuadran (di pojok) -->
+  <text x="${right-8}" y="${top+18}" text-anchor="end" font-size="12.5" font-weight="700" fill="#15803d">Enthusiast</text>
+  <text x="${left+8}" y="${top+16}" text-anchor="start" font-size="12.5" font-weight="700" fill="#1d4ed8"><tspan x="${left+8}" dy="0">Cautious</tspan><tspan x="${left+8}" dy="14">Adopter</tspan></text>
+  <text x="${right-8}" y="${bottom-10}" text-anchor="end" font-size="12.5" font-weight="700" fill="#b45309">Passive</text>
+  <text x="${left+8}" y="${bottom-10}" text-anchor="start" font-size="12.5" font-weight="700" fill="#b91c1c">Skeptic</text>
+
+  <!-- nilai ambang -->
+  <text x="${vx}" y="${bottom+15}" text-anchor="middle" font-size="9.5" fill="#64748b">3,125</text>
+  <text x="${left-6}" y="${hy+3}" text-anchor="end" font-size="9.5" fill="#64748b">3,750</text>
+
+  <!-- judul sumbu X -->
+  <text x="${left+plotW/2}" y="${H-6}" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">Inhibitor (reversed) → hambatan makin rendah</text>
+  <text x="${left}" y="${bottom+30}" text-anchor="start" font-size="9.5" fill="#64748b">hambatan tinggi</text>
+  <text x="${right}" y="${bottom+30}" text-anchor="end" font-size="9.5" fill="#64748b">hambatan rendah</text>
+
+  <!-- judul sumbu Y -->
+  <text transform="translate(13 ${top+plotH/2}) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">Motivator → makin tinggi</text>
+
+  <!-- titik pengguna -->
+  <circle cx="${cx}" cy="${cy}" r="11" fill="${pColor}" opacity="0.18"/>
+  <circle cx="${cx}" cy="${cy}" r="6.5" fill="${pColor}" stroke="#ffffff" stroke-width="2.5"/>
+  <text x="${labX}" y="${labY}" text-anchor="${labAnchor}" font-size="11.5" font-weight="800" fill="#0f2747">Anda</text>
+</svg>`;
+    $("chart").innerHTML = svg;
+  }
+
+  /* ---------- Tampilkan hasil ---------- */
+  function showResults(){
+    const ans = getAnswers();
+    if(countAnswered(ans) !== ITEMS.length){
+      // tandai yang belum dijawab
+      ITEMS.forEach(it=>{
+        const q = document.getElementById("q-"+it.id);
+        if(ans[it.id]==null){ q.classList.add("unanswered-flag"); }
+      });
+      $("validation-msg").classList.add("show");
+      const firstMiss = ITEMS.find(it=>ans[it.id]==null);
+      if(firstMiss){ document.getElementById("q-"+firstMiss.id).scrollIntoView({behavior:"smooth",block:"center"}); }
+      return;
+    }
+
+    const s = computeScores(ans);
+    const cat = triCategory(s.tri);
+    const key = classifyPersona(s.motivator, s.inhibitorRev);
+    const p = PERSONAS[key];
+
+    // skor
+    $("r-mot").textContent = fmt2(s.motivator);
+    $("r-inh").textContent = fmt2(s.inhibitorRev);
+    $("r-tri").textContent = fmt2(s.tri);
+    $("r-tri-cat").textContent = "Kategori: "+cat;
+
+    // kartu persona
+    $("persona-tag").textContent = p.en;
+    $("persona-tag").style.background = p.color;
+    $("persona-name").textContent = p.name;
+    $("persona-en").textContent = "Persona: "+p.en;
+    $("persona-desc").textContent = p.desc;
+    const pc = $("persona-card");
+    pc.style.borderLeftColor = p.color;
+    pc.style.background = p.color+"0f"; // tint sangat tipis
+
+    // diagram
+    buildChart(s.motivator, s.inhibitorRev, key);
+
+    // rekomendasi
+    $("rec-list").innerHTML = p.recs.map(r=>'<li>'+esc(r)+'</li>').join("");
+
+    // ringkasan
+    const nm = $("inp-name").value.trim();
+    const dv = $("inp-div").value;
+    const now = new Date();
+    const tgl = now.toLocaleDateString("id-ID",{day:"2-digit",month:"long",year:"numeric"});
+    let rows = "";
+    if(nm) rows += '<div class="row"><span>Nama / ID</span><span>'+esc(nm)+'</span></div>';
+    if(dv) rows += '<div class="row"><span>Divisi</span><span>'+esc(dv)+'</span></div>';
+    rows += '<div class="row"><span>Tanggal</span><span>'+esc(tgl)+'</span></div>';
+    rows += '<div class="row"><span>Motivator</span><span>'+fmt2(s.motivator)+'</span></div>';
+    rows += '<div class="row"><span>Inhibitor (reversed)</span><span>'+fmt2(s.inhibitorRev)+'</span></div>';
+    rows += '<div class="row"><span>TRI Index</span><span>'+fmt2(s.tri)+' ('+cat+')</span></div>';
+    rows += '<div class="row"><span>Persona</span><span>'+esc(p.name)+' ('+p.en+')</span></div>';
+    $("summary-box").innerHTML = rows;
+
+    goTo("result");
+  }
+
+  /* ---------- Navigasi layar ---------- */
+  function goTo(name){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+    $("screen-"+name).classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function resetAll(){
+    $("quiz-form").reset();
+    document.querySelectorAll(".question").forEach(q=>q.classList.remove("answered","unanswered-flag"));
+    $("validation-msg").classList.remove("show");
+    updateProgress();
+    $("inp-name").value="";
+    $("inp-div").value="";
+    goTo("intro");
+  }
+
+  /* ---------- Init ---------- */
+  buildQuiz();
+  updateProgress();
+
+  $("btn-start").addEventListener("click", ()=>goTo("quiz"));
+  $("btn-back-intro").addEventListener("click", ()=>goTo("intro"));
+  $("btn-result").addEventListener("click", showResults);
+  $("btn-reset").addEventListener("click", resetAll);
+
+})();
+</script>
+</body>
+</html>
