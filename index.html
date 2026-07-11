@@ -46,61 +46,36 @@
     padding:24px 20px;
     margin-bottom:18px;
   }
-  h1{
-    font-size:1.5rem;
-    line-height:1.25;
-    margin:0 0 10px;
-    color:var(--navy);
-  }
-  h2{
-    font-size:1.2rem;
-    margin:0 0 12px;
-    color:var(--navy);
-  }
-  h3{
-    font-size:1.02rem;
-    margin:0 0 8px;
-    color:var(--navy-2);
-  }
+  h1{font-size:1.5rem;line-height:1.25;margin:0 0 10px;color:var(--navy);}
+  h2{font-size:1.2rem;margin:0 0 12px;color:var(--navy);}
+  h3{font-size:1.02rem;margin:0 0 8px;color:var(--navy-2);}
   p{margin:0 0 12px;}
   .muted{color:var(--gray-500);font-size:.92rem;}
   .lead{color:var(--gray-700);}
-  .brandbar{
-    height:6px;
-    border-radius:999px;
-    background:linear-gradient(90deg,var(--navy),var(--blue));
-    margin-bottom:18px;
-  }
+  .brandbar{height:6px;border-radius:999px;background:linear-gradient(90deg,var(--navy),var(--blue));margin-bottom:16px;}
+
+  /* Step indicator */
+  .stepper{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;}
+  .stepper-label{font-size:.82rem;font-weight:700;color:var(--navy);}
+  .stepper-dots{display:flex;gap:6px;}
+  .stepper-dots .dot{width:26px;height:6px;border-radius:999px;background:var(--gray-300);transition:background .2s;}
+  .stepper-dots .dot.done{background:var(--navy-2);}
+  .stepper-dots .dot.active{background:var(--blue);}
 
   /* Form fields */
   label.field{display:block;margin-bottom:16px;font-weight:600;color:var(--gray-700);font-size:.96rem;}
   input[type="text"],select{
-    width:100%;
-    margin-top:6px;
-    padding:12px 14px;
-    font-size:1rem;
-    border:1.5px solid var(--gray-300);
-    border-radius:10px;
-    background:var(--white);
-    color:var(--gray-900);
-    font-family:inherit;
+    width:100%;margin-top:6px;padding:12px 14px;font-size:1rem;
+    border:1.5px solid var(--gray-300);border-radius:10px;
+    background:var(--white);color:var(--gray-900);font-family:inherit;
   }
-  input[type="text"]:focus,select:focus{
-    outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft);
-  }
+  input[type="text"]:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft);}
 
   /* Buttons */
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;
-    padding:15px 18px;
-    font-size:1.05rem;
-    font-weight:700;
-    font-family:inherit;
-    border:none;border-radius:12px;
-    background:var(--navy);
-    color:#fff;
-    cursor:pointer;
+    width:100%;padding:15px 18px;font-size:1.05rem;font-weight:700;font-family:inherit;
+    border:none;border-radius:12px;background:var(--navy);color:#fff;cursor:pointer;
     transition:background .15s,transform .05s,opacity .15s;
   }
   .btn:hover{background:var(--navy-2);}
@@ -109,96 +84,52 @@
   .btn.secondary{background:var(--white);color:var(--navy);border:1.5px solid var(--gray-300);}
   .btn.secondary:hover{background:var(--gray-100);}
 
+  /* Overview (edukasi) */
+  .video-16x9{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#000;margin:6px 0 16px;}
+  .video-16x9 iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+  figure.cm-figure{margin:0;}
+  figure.cm-figure img{width:100%;max-width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--gray-200);}
+  figure.cm-figure figcaption{font-size:.8rem;color:var(--gray-500);text-align:center;margin-top:8px;}
+  .info-list{margin:0 0 14px;padding-left:0;list-style:none;}
+  .info-list li{position:relative;padding:8px 12px 8px 34px;margin-bottom:8px;background:var(--blue-soft);border-radius:10px;font-size:.96rem;color:var(--navy-2);}
+  .info-list li::before{content:"";position:absolute;left:12px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--blue);}
+
   /* Scale legend */
-  .legend{
-    background:var(--blue-soft);
-    border-radius:10px;
-    padding:12px 14px;
-    margin-bottom:18px;
-    font-size:.9rem;
-    color:var(--navy-2);
-  }
+  .legend{background:var(--blue-soft);border-radius:10px;padding:12px 14px;margin-bottom:18px;font-size:.9rem;color:var(--navy-2);}
   .legend strong{display:block;margin-bottom:4px;color:var(--navy);}
   .legend ul{margin:0;padding-left:18px;}
   .legend li{margin:2px 0;}
 
-  /* Progress */
-  .progress-wrap{
-    position:sticky;top:0;z-index:20;
-    background:var(--bg);
-    padding:10px 0 8px;
-    margin:-6px 0 8px;
-  }
+  /* Progress (kuesioner) */
+  .progress-wrap{position:sticky;top:0;z-index:20;background:var(--bg);padding:10px 0 8px;margin:-6px 0 8px;}
   .progress-track{height:10px;background:var(--gray-200);border-radius:999px;overflow:hidden;}
   .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--navy));transition:width .25s;}
   .progress-text{font-size:.85rem;color:var(--gray-500);margin-top:6px;text-align:right;}
 
   /* Sections + questions */
   .section{margin-bottom:8px;}
-  .section-head{
-    display:flex;align-items:center;gap:10px;
-    margin:22px 0 10px;
-  }
-  .section-num{
-    flex:none;
-    width:30px;height:30px;border-radius:8px;
-    background:var(--navy);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-weight:700;font-size:.95rem;
-  }
+  .section-head{display:flex;align-items:center;gap:10px;margin:22px 0 10px;}
+  .section-num{flex:none;width:30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;}
   .section-title{font-weight:700;color:var(--navy);font-size:1.02rem;}
-
-  .question{
-    border:1.5px solid var(--gray-200);
-    border-radius:12px;
-    padding:14px 14px 12px;
-    margin-bottom:12px;
-    transition:border-color .15s,background .15s;
-  }
+  .question{border:1.5px solid var(--gray-200);border-radius:12px;padding:14px 14px 12px;margin-bottom:12px;transition:border-color .15s,background .15s;}
   .question.answered{border-color:#bcdca8;background:#fafdf7;}
   .question.unanswered-flag{border-color:var(--red);background:#fff6f6;}
   .q-text{margin:0 0 12px;font-size:1rem;color:var(--gray-900);}
   .q-num{font-weight:700;color:var(--blue);margin-right:4px;}
-
   .likert{display:flex;gap:6px;}
   .opt{flex:1;cursor:pointer;}
   .opt input{position:absolute;opacity:0;width:0;height:0;}
-  .opt span{
-    display:flex;align-items:center;justify-content:center;
-    height:46px;
-    border:1.5px solid var(--gray-300);
-    border-radius:10px;
-    font-weight:700;font-size:1.05rem;
-    color:var(--gray-700);
-    background:var(--white);
-    transition:all .12s;
-    user-select:none;
-  }
+  .opt span{display:flex;align-items:center;justify-content:center;height:46px;border:1.5px solid var(--gray-300);border-radius:10px;font-weight:700;font-size:1.05rem;color:var(--gray-700);background:var(--white);transition:all .12s;user-select:none;}
   .opt:hover span{border-color:var(--blue);}
-  .opt input:checked + span{
-    background:var(--blue);border-color:var(--blue);color:#fff;
-    box-shadow:0 2px 8px rgba(37,99,235,.35);
-  }
+  .opt input:checked + span{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(37,99,235,.35);}
   .opt input:focus-visible + span{box-shadow:0 0 0 3px var(--blue-soft);}
   .scale-ends{display:flex;justify-content:space-between;margin-top:6px;font-size:.74rem;color:var(--gray-500);}
-
-  .validation-msg{
-    color:var(--red);font-size:.9rem;font-weight:600;margin:10px 0 0;
-    display:none;
-  }
+  .validation-msg{color:var(--red);font-size:.9rem;font-weight:600;margin:10px 0 0;display:none;}
   .validation-msg.show{display:block;}
 
   /* Results */
-  .scorebar{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;
-  }
-  .score{
-    text-align:center;
-    border-radius:12px;
-    padding:14px 8px;
-    background:var(--gray-100);
-    border:1.5px solid var(--gray-200);
-  }
+  .scorebar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:4px;}
+  .score{text-align:center;border-radius:12px;padding:14px 8px;background:var(--gray-100);border:1.5px solid var(--gray-200);}
   .score .label{font-size:.78rem;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
   .score .val{font-size:1.7rem;font-weight:800;color:var(--navy);line-height:1.1;margin-top:4px;}
   .score .sub{font-size:.78rem;color:var(--gray-500);margin-top:2px;}
@@ -207,48 +138,36 @@
   .score.tri .val{color:#fff;}
   .score.tri .sub{color:#fff;font-weight:700;}
 
-  .persona-card{
-    border-radius:12px;
-    padding:16px 16px 6px;
-    margin-bottom:18px;
-    border:1.5px solid var(--gray-200);
-    border-left-width:7px;
-  }
+  #radar svg,#chart svg{width:100%;height:auto;display:block;}
+  .chart-hint{font-size:.84rem;color:var(--gray-500);margin-top:10px;text-align:center;}
+
+  /* Percentile */
+  .pct-line{font-size:1.02rem;color:var(--gray-900);margin-bottom:10px;}
+  .pct-line strong{color:var(--navy);}
+  .pct-track{height:14px;background:var(--gray-200);border-radius:999px;overflow:hidden;margin:6px 0 10px;}
+  .pct-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--navy));transition:width .4s;}
+  .badge-top{display:inline-flex;align-items:center;gap:6px;background:#fef3c7;color:#92400e;border:1.5px solid #fcd34d;font-weight:800;font-size:.9rem;padding:5px 12px;border-radius:999px;}
+
+  .persona-card{border-radius:12px;padding:16px 16px 6px;margin-bottom:18px;border:1.5px solid var(--gray-200);border-left-width:7px;}
   .persona-tag{display:inline-block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:999px;color:#fff;margin-bottom:8px;}
   .persona-card h2{margin-bottom:6px;}
   .persona-card .en{font-weight:600;color:var(--gray-500);font-size:.95rem;}
 
-  .chart-card svg{width:100%;height:auto;display:block;}
-  .chart-hint{font-size:.84rem;color:var(--gray-500);margin-top:10px;text-align:center;}
-
   .rec-list{margin:6px 0 0;padding-left:0;list-style:none;}
-  .rec-list li{
-    position:relative;padding:10px 12px 10px 40px;margin-bottom:8px;
-    background:var(--gray-100);border-radius:10px;font-size:.98rem;
-  }
-  .rec-list li::before{
-    content:"✓";
-    position:absolute;left:12px;top:50%;transform:translateY(-50%);
-    width:20px;height:20px;border-radius:50%;
-    background:var(--navy);color:#fff;font-size:.75rem;font-weight:700;
-    display:flex;align-items:center;justify-content:center;
-  }
+  .rec-list li{position:relative;padding:10px 12px 10px 40px;margin-bottom:8px;background:var(--gray-100);border-radius:10px;font-size:.98rem;}
+  .rec-list li::before{content:"✓";position:absolute;left:12px;top:14px;width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .context-note{margin-top:14px;padding:12px 14px;border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:8px;font-size:.92rem;color:var(--navy-2);}
 
-  .summary-box{
-    background:var(--gray-100);border:1px dashed var(--gray-300);
-    border-radius:10px;padding:12px 14px;font-size:.9rem;color:var(--gray-700);
-  }
+  .summary-box{background:var(--gray-100);border:1px dashed var(--gray-300);border-radius:10px;padding:12px 14px;font-size:.9rem;color:var(--gray-700);}
   .summary-box .row{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px solid var(--gray-200);}
   .summary-box .row:last-child{border-bottom:none;}
   .summary-box .row span:first-child{color:var(--gray-500);}
   .summary-box .row span:last-child{font-weight:600;text-align:right;}
-
   .disclaimer{font-size:.8rem;color:var(--gray-500);line-height:1.5;margin-top:18px;border-top:1px solid var(--gray-200);padding-top:14px;}
 
   .screen{display:none;}
   .screen.active{display:block;animation:fade .25s ease;}
   @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-
   .footer-note{text-align:center;font-size:.78rem;color:var(--gray-500);margin-top:8px;}
 
   @media (max-width:480px){
@@ -257,8 +176,9 @@
     .card{padding:20px 16px;}
     h1{font-size:1.32rem;}
     .opt span{height:44px;font-size:1rem;}
-    .score .val{font-size:1.45rem;}
+    .score .val{font-size:1.4rem;}
     .scorebar{gap:8px;}
+    .stepper-dots .dot{width:20px;}
   }
 </style>
 </head>
@@ -266,11 +186,22 @@
 <div class="wrap">
   <div class="brandbar"></div>
 
-  <!-- ===================== LAYAR 1: PEMBUKA ===================== -->
-  <section id="screen-intro" class="screen active">
+  <!-- Indikator langkah -->
+  <div class="stepper" id="stepper">
+    <div class="stepper-label" id="stepper-label">Langkah 1 dari 4 — Identitas</div>
+    <div class="stepper-dots">
+      <span class="dot" data-step="1"></span>
+      <span class="dot" data-step="2"></span>
+      <span class="dot" data-step="3"></span>
+      <span class="dot" data-step="4"></span>
+    </div>
+  </div>
+
+  <!-- ===================== LAYAR 1: IDENTITAS ===================== -->
+  <section id="screen-identity" class="screen active">
     <div class="card">
       <h1>Penilaian Mandiri Kesiapan Teknologi (TRI 2.0)</h1>
-      <p class="lead">Penilaian singkat ini membantu Anda mengenali tingkat kesiapan pribadi dalam mengadopsi teknologi baru di tempat kerja, khususnya sistem <em>Condition Monitoring</em> berbasis kecerdasan buatan di pabrik <em>metal stamping</em>. Anda akan menjawab 16 pernyataan, lalu memperoleh skor, persona kesiapan teknologi, dan rekomendasi langkah pengembangan. Pengisian hanya membutuhkan waktu sekitar 3–5 menit.</p>
+      <p class="lead">Penilaian singkat ini membantu Anda mengenali tingkat kesiapan pribadi dalam mengadopsi teknologi baru di tempat kerja, khususnya sistem <em>Condition Monitoring</em> berbasis kecerdasan buatan di pabrik <em>metal stamping</em>. Silakan isi identitas berikut (opsional), lalu lanjutkan.</p>
 
       <label class="field">Nama / ID Pekerja <span class="muted">(opsional)</span>
         <input type="text" id="inp-name" placeholder="Mis. Budi S. / NIK 12345" autocomplete="off">
@@ -287,12 +218,49 @@
         </select>
       </label>
 
-      <button class="btn" id="btn-start">Mulai Penilaian →</button>
+      <button class="btn" id="btn-to-overview">Lanjut →</button>
       <p class="footer-note">Data hanya diproses di perangkat Anda dan tidak dikirim ke server mana pun.</p>
     </div>
   </section>
 
-  <!-- ===================== LAYAR 2: KUESIONER ===================== -->
+  <!-- ===================== LAYAR 2: OVERVIEW CONDITION MONITORING ===================== -->
+  <section id="screen-overview" class="screen">
+    <div class="card">
+      <h2>Apa itu Condition Monitoring Berbasis AI?</h2>
+
+      <p><strong>Condition Monitoring</strong> (pemantauan kondisi) adalah cara memantau keadaan mesin secara terus-menerus menggunakan sensor — misalnya sensor getaran (vibrasi), suhu (temperatur), dan tekanan. Sensor membaca “tanda-tanda” dari mesin sehingga gejala kerusakan bisa dikenali lebih awal, jauh sebelum berubah menjadi kerusakan besar.</p>
+
+      <p>Dengan bantuan <strong>kecerdasan buatan (AI)</strong>, data dari sensor tersebut dianalisis untuk memprediksi potensi kegagalan sebelum benar-benar terjadi. Hasilnya, perawatan dapat dijadwalkan pada waktu yang tepat dan <em>downtime</em> (mesin berhenti mendadak) yang tidak terencana dapat dikurangi.</p>
+
+      <p>Yang terpenting, teknologi ini dirancang untuk <strong>mendukung dan meringankan</strong> pekerjaan teknisi serta operator — bukan untuk menggantikan peran Anda. Keputusan akhir tetap berada di tangan manusia; sistem hanya memberi peringatan dini dan rekomendasi.</p>
+
+      <ul class="info-list">
+        <li>Deteksi dini gejala kerusakan lewat sensor vibrasi, suhu, dan tekanan.</li>
+        <li>AI memprediksi potensi kegagalan sehingga perawatan bisa terjadwal.</li>
+        <li>Mendukung pekerjaan operator &amp; teknisi, bukan menggantikannya.</li>
+      </ul>
+
+      <div class="video-16x9">
+        <iframe src="https://www.youtube.com/embed/JRtW0vou2T0"
+                title="Video pengenalan Condition Monitoring berbasis AI"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+      </div>
+
+      <figure class="cm-figure" id="cm-figure">
+        <img src="cm-overview.png.png"
+             alt="Ilustrasi condition monitoring berbasis AI pada mesin industri"
+             onerror="this.closest('figure').style.display='none';">
+        <figcaption>Ilustrasi sistem Condition Monitoring berbasis AI</figcaption>
+      </figure>
+
+      <button class="btn" id="btn-start" style="margin-top:18px;">Mulai Penilaian →</button>
+      <button class="btn secondary" id="btn-back-identity" style="margin-top:10px;">← Kembali</button>
+    </div>
+  </section>
+
+  <!-- ===================== LAYAR 3: KUESIONER ===================== -->
   <section id="screen-quiz" class="screen">
     <div class="card">
       <div class="progress-wrap">
@@ -316,41 +284,60 @@
 
       <p class="validation-msg" id="validation-msg">Mohon jawab semua pernyataan terlebih dahulu. Pernyataan yang belum dijawab ditandai dengan warna merah.</p>
       <button class="btn" id="btn-result" disabled>Lihat Hasil →</button>
-      <button class="btn secondary" id="btn-back-intro" style="margin-top:10px;">← Kembali</button>
+      <button class="btn secondary" id="btn-back-overview" style="margin-top:10px;">← Kembali</button>
     </div>
   </section>
 
-  <!-- ===================== LAYAR 3: HASIL ===================== -->
+  <!-- ===================== LAYAR 4: HASIL ===================== -->
   <section id="screen-result" class="screen">
+    <!-- (1) Tiga skor -->
     <div class="card">
       <h2>Hasil Penilaian Anda</h2>
-
       <div class="scorebar">
         <div class="score"><div class="label">Motivator</div><div class="val" id="r-mot">–</div><div class="sub">Optimism + Innovativeness</div></div>
         <div class="score"><div class="label">Inhibitor*</div><div class="val" id="r-inh">–</div><div class="sub">*reversed</div></div>
         <div class="score tri"><div class="label">TRI Index</div><div class="val" id="r-tri">–</div><div class="sub" id="r-tri-cat">–</div></div>
       </div>
+    </div>
 
+    <!-- (2) Radar chart profil dimensi -->
+    <div class="card">
+      <h3>Profil Dimensi Kesiapan</h3>
+      <p class="muted" style="margin-bottom:8px;">Grafik menampilkan rata-rata <strong>skor asli</strong> (skala 1–5) untuk tiap dimensi. Nilai Discomfort dan Insecurity ditampilkan apa adanya (belum dibalik).</p>
+      <div id="radar"></div>
+    </div>
+
+    <!-- (3) Persentil terhadap baseline -->
+    <div class="card">
+      <h3>Posisi terhadap Baseline Penelitian</h3>
+      <p class="pct-line" id="pct-line">–</p>
+      <div class="pct-track"><div class="pct-fill" id="pct-fill"></div></div>
+      <div id="pct-badge-wrap"></div>
+    </div>
+
+    <!-- (4) Persona + kuadran -->
+    <div class="card">
       <div class="persona-card" id="persona-card">
         <span class="persona-tag" id="persona-tag">PERSONA</span>
         <h2 id="persona-name">–</h2>
         <div class="en" id="persona-en"></div>
         <p id="persona-desc" style="margin-top:8px;"></p>
       </div>
-    </div>
 
-    <div class="card chart-card">
       <h3>Posisi Anda dalam Kuadran Kesiapan</h3>
       <p class="muted" style="margin-bottom:8px;">Sumbu mendatar menunjukkan tingkat hambatan psikologis (semakin ke kanan = hambatan semakin rendah). Sumbu tegak menunjukkan motivasi terhadap teknologi (semakin ke atas = motivasi semakin tinggi).</p>
       <div id="chart"></div>
       <p class="chart-hint">Garis putus-putus adalah ambang baseline penelitian (Inhibitor-reversed = 3,125 dan Motivator = 3,750). Titik menandai posisi Anda.</p>
     </div>
 
+    <!-- (5) Rekomendasi + (6) konteks roadmap -->
     <div class="card">
       <h3>Rekomendasi Langkah Pengembangan</h3>
       <ul class="rec-list" id="rec-list"></ul>
+      <div class="context-note" id="context-note"></div>
     </div>
 
+    <!-- (7) Ringkasan + disclaimer + (8) tombol -->
     <div class="card">
       <h3>Ringkasan</h3>
       <p class="muted" style="margin-bottom:10px;">Anda dapat menyimpan hasil ini dengan mengambil tangkapan layar (<em>screenshot</em>).</p>
@@ -407,29 +394,36 @@
   const THRESH_MOT = 3.750;
   const THRESH_INH = 3.125;
 
+  /* 45 nilai TRI Index baseline penelitian (n=45) */
+  const BASELINE = [3.25, 2.8125, 3.5625, 3.4375, 3.8125, 3.625, 3.4375, 3.25, 3.3125, 3.25, 4.6875, 3.625, 3.5625, 4.1875, 3.9375, 4.3125, 3.1875, 4.4375, 3.5, 3.125, 3.5625, 3.4375, 3.625, 3.625, 3.4375, 3.4375, 3.0625, 2.875, 2.8125, 3.1875, 2.625, 3.125, 3.375, 2.9375, 3.0625, 4.0, 3.4375, 2.625, 3.4375, 3.625, 3.5, 4.1875, 3.75, 3.375, 3.875];
+
   /* ---------- Data persona ---------- */
   const PERSONAS = {
     enthusiast:{
       name:"Penggerak Teknologi",
       en:"Enthusiast",
       color:"#16a34a",
-      desc:"Memiliki motivasi tinggi terhadap teknologi dengan hambatan psikologis yang rendah. Kelompok paling siap mengadopsi teknologi baru.",
+      desc:"Motivasi tinggi terhadap teknologi dengan hambatan psikologis rendah. Kelompok paling siap mengadopsi teknologi baru.",
       recs:[
-        "Dilibatkan sebagai agen perubahan (champion) yang membantu memperkenalkan sistem baru kepada rekan kerja.",
-        "Diberi pelatihan tingkat lanjut agar dapat menjadi rujukan teknis di unit kerjanya.",
-        "Dilibatkan sejak tahap awal dalam pelaksanaan pilot project sistem Condition Monitoring."
-      ]
+        "Ambil peran aktif memengaruhi rekan kerja: bagikan pemahaman tentang pentingnya condition monitoring dalam obrolan sehari-hari di lantai produksi, dan bantu jawab keraguan rekan yang masih ragu.",
+        "Ajukan diri sebagai champion atau agen perubahan saat perusahaan membentuk tim transformasi, termasuk terlibat sejak awal dalam pilot project pemantauan kondisi mesin.",
+        "Ikuti pelatihan tingkat lanjut, misalnya membaca tren data sensor dan dashboard, agar dapat menjadi rujukan teknis pertama di unit kerja.",
+        "Jadilah mentor informal: dampingi satu-dua rekan dari kelompok yang masih ragu saat mereka mulai menggunakan sistem baru."
+      ],
+      roadmap:"Rekomendasi ini selaras dengan roadmap pengembangan SDM perusahaan, di mana kelompok Enthusiast berperan pada tahap awal sebagai penggerak perubahan."
     },
     cautious:{
       name:"Adopter Hati-hati",
       en:"Cautious Adopter",
       color:"#2563eb",
-      desc:"Memiliki motivasi tinggi terhadap teknologi, namun masih menyimpan keraguan atau ketidaknyamanan tertentu. Terbuka terhadap teknologi bila didampingi.",
+      desc:"Motivasi tinggi terhadap teknologi, namun masih menyimpan keraguan atau ketidaknyamanan tertentu. Terbuka terhadap teknologi bila didampingi.",
       recs:[
-        "Diberi pelatihan teknis yang terstruktur untuk meningkatkan rasa percaya diri dalam menggunakan sistem.",
-        "Diberi pendampingan langsung pada masa awal penggunaan untuk mengurangi keraguan.",
-        "Diperkenalkan pada manfaat konkret teknologi melalui contoh penerapan yang relevan dengan pekerjaannya."
-      ]
+        "Ikuti pelatihan teknis terstruktur, seperti penggunaan dashboard dan pembacaan notifikasi kondisi mesin, untuk membangun rasa percaya diri melalui praktik langsung.",
+        "Manfaatkan pendampingan buddy system: belajar berdampingan dengan rekan dari kelompok Enthusiast pada masa awal penggunaan sistem.",
+        "Mulai dari kemenangan kecil: gunakan satu fitur yang paling relevan dengan pekerjaan harian terlebih dahulu, lalu bertahap ke fitur lainnya.",
+        "Sampaikan keraguan atau kesulitan secara terbuka kepada atasan atau tim pendamping agar hambatan teknis cepat teratasi."
+      ],
+      roadmap:"Rekomendasi ini selaras dengan roadmap pengembangan SDM perusahaan, di mana kelompok Cautious Adopter menjadi fokus pada tahap pelatihan teknis dan pilot project."
     },
     passive:{
       name:"Pasif",
@@ -437,10 +431,12 @@
       color:"#d97706",
       desc:"Hambatan psikologis rendah, namun motivasi terhadap teknologi belum tinggi. Cenderung mengikuti, tidak menolak namun juga tidak proaktif.",
       recs:[
-        "Diberi sosialisasi mengenai manfaat dan tujuan penerapan teknologi agar tumbuh motivasi.",
-        "Didorong keterlibatannya melalui pelibatan bertahap dalam kegiatan terkait teknologi.",
-        "Diberi penguatan bahwa teknologi baru bertujuan mendukung, bukan menggantikan, peran mereka."
-      ]
+        "Ikuti sesi sosialisasi manfaat condition monitoring, terutama contoh nyata bagaimana deteksi dini kerusakan mengurangi pekerjaan darurat dan lembur tak terduga.",
+        "Libatkan diri secara bertahap: mulai dari mengamati dashboard atau notifikasi terlebih dahulu, tanpa kewajiban langsung mengoperasikan.",
+        "Pahami bahwa teknologi ini dirancang untuk mendukung dan meringankan pekerjaan, bukan menggantikan peran Anda.",
+        "Cari tahu dampak langsung ke pekerjaan sendiri: tanyakan kepada rekan atau atasan apa yang berubah dan apa manfaatnya bagi posisi Anda."
+      ],
+      roadmap:"Rekomendasi ini selaras dengan roadmap pengembangan SDM perusahaan, di mana kelompok Passive menjadi fokus sosialisasi dan pelibatan bertahap."
     },
     skeptic:{
       name:"Skeptis",
@@ -448,20 +444,25 @@
       color:"#dc2626",
       desc:"Motivasi terhadap teknologi rendah dan hambatan psikologis tinggi. Kelompok yang paling memerlukan pendampingan intensif.",
       recs:[
-        "Diberi pendampingan intensif dan edukasi bertahap untuk menumbuhkan pemahaman dan kepercayaan.",
-        "Ditangani kekhawatirannya secara spesifik melalui komunikasi yang terbuka.",
-        "Diperkenalkan teknologi secara perlahan dimulai dari fungsi yang paling sederhana dan tidak mengancam."
-      ]
+        "Manfaatkan pendampingan intensif yang disediakan: belajar bertahap dimulai dari fungsi paling sederhana dan paling dekat dengan pekerjaan sehari-hari.",
+        "Sampaikan kekhawatiran secara terbuka, misalnya soal ketergantungan pada teknologi atau keandalan sistem, dalam forum dua arah; kekhawatiran yang disampaikan dapat ditangani, sedangkan yang dipendam tidak.",
+        "Perhatikan bukti nyata: amati pengalaman rekan kerja yang sudah menggunakan sistem dan hasil yang mereka rasakan sebelum menilai.",
+        "Ingat bahwa keputusan akhir tetap berada di tangan manusia; sistem hanya memberikan peringatan dini dan rekomendasi, bukan mengambil alih pekerjaan."
+      ],
+      roadmap:"Rekomendasi ini selaras dengan roadmap pengembangan SDM perusahaan, di mana kelompok Skeptic mendapat pendampingan berkelanjutan hingga tahap implementasi penuh."
     }
   };
 
   const SCALE_TEXT = {1:"Sangat Tidak Setuju",2:"Tidak Setuju",3:"Netral",4:"Setuju",5:"Sangat Setuju"};
 
+  /* Peta layar -> nomor langkah */
+  const STEP = {identity:1, overview:2, quiz:3, result:4};
+  const STEP_LABEL = {1:"Identitas", 2:"Pengenalan", 3:"Kuesioner", 4:"Hasil"};
+
   /* ---------- Util ---------- */
   const $ = (id)=>document.getElementById(id);
   function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
   function fmt2(n){return n.toFixed(2).replace(".",",");}     // 2 desimal, koma
-  function fmt3(n){return n.toFixed(3).replace(".",",");}     // 3 desimal (ambang)
 
   /* ---------- Bangun kuesioner ---------- */
   function buildQuiz(){
@@ -542,6 +543,13 @@
     return {motivator, inhibitorRev, tri};
   }
 
+  /* Rata-rata skor ASLI (1-5) per dimensi, untuk radar chart */
+  function dimAverages(ans){
+    const sums={OPT:0,INN:0,DIS:0,INS:0}, cnts={OPT:0,INN:0,DIS:0,INS:0};
+    ITEMS.forEach(it=>{ sums[it.dim]+=ans[it.id]; cnts[it.dim]++; });
+    return {OPT:sums.OPT/cnts.OPT, INN:sums.INN/cnts.INN, DIS:sums.DIS/cnts.DIS, INS:sums.INS/cnts.INS};
+  }
+
   function triCategory(tri){
     if(tri < 2.90) return "Rendah";
     if(tri <= 3.50) return "Sedang";
@@ -557,29 +565,84 @@
     return "skeptic";
   }
 
+  /* Persentil terhadap baseline penelitian */
+  function computePercentile(tri){
+    const below = BASELINE.filter(b=>b<tri).length;
+    return Math.round(below/BASELINE.length*100);
+  }
+
+  /* ---------- Radar chart (SVG murni) ---------- */
+  function buildRadar(da){
+    const W=380, H=340, cx=190, cy=165, R=92;
+    const axes=[
+      {key:"OPT",label:"Optimism",angle:-90},
+      {key:"INN",label:"Innovativeness",angle:0},
+      {key:"DIS",label:"Discomfort",angle:90},
+      {key:"INS",label:"Insecurity",angle:180}
+    ];
+    const rad=a=>a*Math.PI/180;
+    const rOf=v=>(v/5)*R;                       // 0 di pusat, 5 di tepi
+    const ptOf=(v,a)=>[cx+rOf(v)*Math.cos(rad(a)), cy+rOf(v)*Math.sin(rad(a))];
+    const f1=n=>n.toFixed(1);
+
+    // gridline / ring untuk level 1..5
+    let rings="";
+    for(let v=1; v<=5; v++){
+      const pts=axes.map(ax=>{const p=ptOf(v,ax.angle);return f1(p[0])+","+f1(p[1]);}).join(" ");
+      rings+='<polygon points="'+pts+'" fill="none" stroke="'+(v===5?'#cbd5e1':'#e5e7eb')+'" stroke-width="1"/>';
+    }
+    // spokes (sumbu)
+    let spokes="";
+    axes.forEach(ax=>{const p=ptOf(5,ax.angle);spokes+='<line x1="'+cx+'" y1="'+cy+'" x2="'+f1(p[0])+'" y2="'+f1(p[1])+'" stroke="#e5e7eb" stroke-width="1"/>';});
+    // angka level 1..5 di sepanjang sumbu atas
+    let levels="";
+    for(let v=1; v<=5; v++){const p=ptOf(v,-90);levels+='<text x="'+f1(p[0]+6)+'" y="'+f1(p[1]+3)+'" font-size="8.5" fill="#9ca3af">'+v+'</text>';}
+    // area data
+    const dpts=axes.map(ax=>{const p=ptOf(da[ax.key],ax.angle);return f1(p[0])+","+f1(p[1]);}).join(" ");
+    let dots="";
+    axes.forEach(ax=>{const p=ptOf(da[ax.key],ax.angle);dots+='<circle cx="'+f1(p[0])+'" cy="'+f1(p[1])+'" r="3.5" fill="#1d4ed8"/>';});
+    // label dimensi + nilai
+    let labels="";
+    axes.forEach(ax=>{
+      const val=fmt2(da[ax.key]);
+      let lx=cx, ly=cy, anchor="middle";
+      if(ax.angle===-90){ ly=cy-R-18; }
+      else if(ax.angle===90){ ly=cy+R+20; }
+      else if(ax.angle===0){ lx=cx+R+42; ly=cy-2; }
+      else { lx=cx-R-42; ly=cy-2; }
+      labels+='<text x="'+lx+'" y="'+ly+'" text-anchor="'+anchor+'" font-size="11.5" font-weight="700" fill="#0f2747">'+
+              ax.label+'<tspan x="'+lx+'" dy="14" font-size="10.5" font-weight="600" fill="#2563eb">'+val+'</tspan></text>';
+    });
+
+    $("radar").innerHTML =
+      '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Radar chart profil dimensi kesiapan teknologi">'+
+        rings+spokes+levels+
+        '<polygon points="'+dpts+'" fill="#2563eb" fill-opacity="0.22" stroke="#1d4ed8" stroke-width="2" stroke-linejoin="round"/>'+
+        dots+labels+
+      '</svg>';
+  }
+
   /* ---------- Diagram kuadran (SVG) ---------- */
   function buildChart(motivator, inhibitorRev, personaKey){
     const W=360, H=360;
     const padL=46, padR=18, padT=18, padB=46;
-    const plotW = W - padL - padR;   // 296
-    const plotH = H - padT - padB;   // 296
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
     const xMin=1, xMax=5, yMin=1, yMax=5;
 
     const xPix = v => padL + (v - xMin)/(xMax - xMin) * plotW;
     const yPix = v => padT + (yMax - v)/(yMax - yMin) * plotH;
 
-    const vx = xPix(THRESH_INH);   // garis vertikal (ambang inhibitor-rev)
-    const hy = yPix(THRESH_MOT);   // garis horizontal (ambang motivator)
+    const vx = xPix(THRESH_INH);
+    const hy = yPix(THRESH_MOT);
     const left=padL, right=padL+plotW, top=padT, bottom=padT+plotH;
 
-    // tints kuadran
     const colEnt="#e7f6ec", colCau="#e8f0fe", colPas="#fdf3e3", colSke="#fdeaea";
 
     const cx = xPix(inhibitorRev);
     const cy = yPix(motivator);
     const pColor = PERSONAS[personaKey].color;
 
-    // posisi label "Anda" agar tidak keluar kanvas
     let labY = cy - 14; let labAnchor="middle";
     if(labY < top+12) labY = cy + 22;
     let labX = cx;
@@ -588,38 +651,23 @@
 
     const svg = `
 <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Diagram kuadran posisi kesiapan teknologi">
-  <!-- latar kuadran -->
   <rect x="${vx}" y="${top}" width="${right-vx}" height="${hy-top}" fill="${colEnt}"/>
   <rect x="${left}" y="${top}" width="${vx-left}" height="${hy-top}" fill="${colCau}"/>
   <rect x="${vx}" y="${hy}" width="${right-vx}" height="${bottom-hy}" fill="${colPas}"/>
   <rect x="${left}" y="${hy}" width="${vx-left}" height="${bottom-hy}" fill="${colSke}"/>
-
-  <!-- bingkai plot -->
   <rect x="${left}" y="${top}" width="${plotW}" height="${plotH}" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
-
-  <!-- garis ambang -->
   <line x1="${vx}" y1="${top}" x2="${vx}" y2="${bottom}" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
   <line x1="${left}" y1="${hy}" x2="${right}" y2="${hy}" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
-
-  <!-- label kuadran (di pojok) -->
   <text x="${right-8}" y="${top+18}" text-anchor="end" font-size="12.5" font-weight="700" fill="#15803d">Enthusiast</text>
   <text x="${left+8}" y="${top+16}" text-anchor="start" font-size="12.5" font-weight="700" fill="#1d4ed8"><tspan x="${left+8}" dy="0">Cautious</tspan><tspan x="${left+8}" dy="14">Adopter</tspan></text>
   <text x="${right-8}" y="${bottom-10}" text-anchor="end" font-size="12.5" font-weight="700" fill="#b45309">Passive</text>
   <text x="${left+8}" y="${bottom-10}" text-anchor="start" font-size="12.5" font-weight="700" fill="#b91c1c">Skeptic</text>
-
-  <!-- nilai ambang -->
   <text x="${vx}" y="${bottom+15}" text-anchor="middle" font-size="9.5" fill="#64748b">3,125</text>
   <text x="${left-6}" y="${hy+3}" text-anchor="end" font-size="9.5" fill="#64748b">3,750</text>
-
-  <!-- judul sumbu X -->
   <text x="${left+plotW/2}" y="${H-6}" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">Inhibitor (reversed) → hambatan makin rendah</text>
   <text x="${left}" y="${bottom+30}" text-anchor="start" font-size="9.5" fill="#64748b">hambatan tinggi</text>
   <text x="${right}" y="${bottom+30}" text-anchor="end" font-size="9.5" fill="#64748b">hambatan rendah</text>
-
-  <!-- judul sumbu Y -->
   <text transform="translate(13 ${top+plotH/2}) rotate(-90)" text-anchor="middle" font-size="11" font-weight="600" fill="#374151">Motivator → makin tinggi</text>
-
-  <!-- titik pengguna -->
   <circle cx="${cx}" cy="${cy}" r="11" fill="${pColor}" opacity="0.18"/>
   <circle cx="${cx}" cy="${cy}" r="6.5" fill="${pColor}" stroke="#ffffff" stroke-width="2.5"/>
   <text x="${labX}" y="${labY}" text-anchor="${labAnchor}" font-size="11.5" font-weight="800" fill="#0f2747">Anda</text>
@@ -631,7 +679,6 @@
   function showResults(){
     const ans = getAnswers();
     if(countAnswered(ans) !== ITEMS.length){
-      // tandai yang belum dijawab
       ITEMS.forEach(it=>{
         const q = document.getElementById("q-"+it.id);
         if(ans[it.id]==null){ q.classList.add("unanswered-flag"); }
@@ -646,14 +693,29 @@
     const cat = triCategory(s.tri);
     const key = classifyPersona(s.motivator, s.inhibitorRev);
     const p = PERSONAS[key];
+    const da = dimAverages(ans);
 
-    // skor
+    // (1) skor
     $("r-mot").textContent = fmt2(s.motivator);
     $("r-inh").textContent = fmt2(s.inhibitorRev);
     $("r-tri").textContent = fmt2(s.tri);
     $("r-tri-cat").textContent = "Kategori: "+cat;
 
-    // kartu persona
+    // (2) radar
+    buildRadar(da);
+
+    // (3) persentil
+    const pct = computePercentile(s.tri);
+    $("pct-line").innerHTML = "Skor kesiapan Anda lebih tinggi dari sekitar <strong>"+pct+"%</strong> responden baseline penelitian (n="+BASELINE.length+").";
+    $("pct-fill").style.width = pct+"%";
+    if(pct >= 75){
+      const y = 100 - pct;
+      $("pct-badge-wrap").innerHTML = '<span class="badge-top">★ Top '+y+'%</span>';
+    } else {
+      $("pct-badge-wrap").innerHTML = "";
+    }
+
+    // (4) persona + kuadran
     $("persona-tag").textContent = p.en;
     $("persona-tag").style.background = p.color;
     $("persona-name").textContent = p.name;
@@ -661,15 +723,14 @@
     $("persona-desc").textContent = p.desc;
     const pc = $("persona-card");
     pc.style.borderLeftColor = p.color;
-    pc.style.background = p.color+"0f"; // tint sangat tipis
-
-    // diagram
+    pc.style.background = p.color+"0f";
     buildChart(s.motivator, s.inhibitorRev, key);
 
-    // rekomendasi
+    // (5) rekomendasi + (6) konteks roadmap
     $("rec-list").innerHTML = p.recs.map(r=>'<li>'+esc(r)+'</li>').join("");
+    $("context-note").textContent = p.roadmap;
 
-    // ringkasan
+    // (7) ringkasan
     const nm = $("inp-name").value.trim();
     const dv = $("inp-div").value;
     const now = new Date();
@@ -681,16 +742,28 @@
     rows += '<div class="row"><span>Motivator</span><span>'+fmt2(s.motivator)+'</span></div>';
     rows += '<div class="row"><span>Inhibitor (reversed)</span><span>'+fmt2(s.inhibitorRev)+'</span></div>';
     rows += '<div class="row"><span>TRI Index</span><span>'+fmt2(s.tri)+' ('+cat+')</span></div>';
+    rows += '<div class="row"><span>Persentil baseline</span><span>'+pct+'%</span></div>';
     rows += '<div class="row"><span>Persona</span><span>'+esc(p.name)+' ('+p.en+')</span></div>';
     $("summary-box").innerHTML = rows;
 
     goTo("result");
   }
 
-  /* ---------- Navigasi layar ---------- */
+  /* ---------- Navigasi layar + indikator langkah ---------- */
+  function updateStepper(step){
+    $("stepper-label").textContent = "Langkah "+step+" dari 4 — "+STEP_LABEL[step];
+    document.querySelectorAll(".stepper-dots .dot").forEach(d=>{
+      const n = parseInt(d.getAttribute("data-step"),10);
+      d.classList.remove("active","done");
+      if(n < step) d.classList.add("done");
+      else if(n === step) d.classList.add("active");
+    });
+  }
+
   function goTo(name){
     document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
     $("screen-"+name).classList.add("active");
+    updateStepper(STEP[name] || 1);
     window.scrollTo({top:0,behavior:"smooth"});
   }
 
@@ -701,15 +774,18 @@
     updateProgress();
     $("inp-name").value="";
     $("inp-div").value="";
-    goTo("intro");
+    goTo("identity");
   }
 
   /* ---------- Init ---------- */
   buildQuiz();
   updateProgress();
+  updateStepper(1);
 
+  $("btn-to-overview").addEventListener("click", ()=>goTo("overview"));
+  $("btn-back-identity").addEventListener("click", ()=>goTo("identity"));
   $("btn-start").addEventListener("click", ()=>goTo("quiz"));
-  $("btn-back-intro").addEventListener("click", ()=>goTo("intro"));
+  $("btn-back-overview").addEventListener("click", ()=>goTo("overview"));
   $("btn-result").addEventListener("click", showResults);
   $("btn-reset").addEventListener("click", resetAll);
 
