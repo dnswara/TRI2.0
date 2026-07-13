@@ -188,7 +188,7 @@
 
   <!-- Indikator langkah -->
   <div class="stepper" id="stepper">
-    <div class="stepper-label" id="stepper-label">Langkah 1 dari 4 — Identitas</div>
+    <div class="stepper-label" id="stepper-label">Langkah 1 dari 4: Identitas</div>
     <div class="stepper-dots">
       <span class="dot" data-step="1"></span>
       <span class="dot" data-step="2"></span>
@@ -209,12 +209,12 @@
 
       <label class="field">Divisi <span class="muted">(opsional)</span>
         <select id="inp-div">
-          <option value="">— Pilih divisi —</option>
+          <option value="">Pilih divisi</option>
           <option value="Welding">Welding</option>
           <option value="Stamping">Stamping</option>
           <option value="Maintenance">Maintenance</option>
           <option value="ICT">ICT</option>
-          <option value="Lainnya">Lainnya</option>
+          <option value="Machining">Machining</option>
         </select>
       </label>
 
@@ -228,11 +228,11 @@
     <div class="card">
       <h2>Apa itu Condition Monitoring Berbasis AI?</h2>
 
-      <p><strong>Condition Monitoring</strong> (pemantauan kondisi) adalah cara memantau keadaan mesin secara terus-menerus menggunakan sensor — misalnya sensor getaran (vibrasi), suhu (temperatur), dan tekanan. Sensor membaca “tanda-tanda” dari mesin sehingga gejala kerusakan bisa dikenali lebih awal, jauh sebelum berubah menjadi kerusakan besar.</p>
+      <p><strong>Condition Monitoring</strong> (pemantauan kondisi) adalah cara memantau keadaan mesin secara terus-menerus menggunakan sensor, misalnya sensor getaran (vibrasi), suhu (temperatur), dan tekanan. Sensor membaca “tanda-tanda” dari mesin sehingga gejala kerusakan bisa dikenali lebih awal, jauh sebelum berubah menjadi kerusakan besar.</p>
 
       <p>Dengan bantuan <strong>kecerdasan buatan (AI)</strong>, data dari sensor tersebut dianalisis untuk memprediksi potensi kegagalan sebelum benar-benar terjadi. Hasilnya, perawatan dapat dijadwalkan pada waktu yang tepat dan <em>downtime</em> (mesin berhenti mendadak) yang tidak terencana dapat dikurangi.</p>
 
-      <p>Yang terpenting, teknologi ini dirancang untuk <strong>mendukung dan meringankan</strong> pekerjaan teknisi serta operator — bukan untuk menggantikan peran Anda. Keputusan akhir tetap berada di tangan manusia; sistem hanya memberi peringatan dini dan rekomendasi.</p>
+      <p>Yang terpenting, teknologi ini dirancang untuk <strong>mendukung dan meringankan</strong> pekerjaan teknisi serta operator, bukan untuk menggantikan peran Anda. Keputusan akhir tetap berada di tangan manusia; sistem hanya memberi peringatan dini dan rekomendasi.</p>
 
       <ul class="info-list">
         <li>Deteksi dini gejala kerusakan lewat sensor vibrasi, suhu, dan tekanan.</li>
@@ -751,7 +751,7 @@
 
   /* ---------- Navigasi layar + indikator langkah ---------- */
   function updateStepper(step){
-    $("stepper-label").textContent = "Langkah "+step+" dari 4 — "+STEP_LABEL[step];
+    $("stepper-label").textContent = "Langkah "+step+" dari 4: "+STEP_LABEL[step];
     document.querySelectorAll(".stepper-dots .dot").forEach(d=>{
       const n = parseInt(d.getAttribute("data-step"),10);
       d.classList.remove("active","done");
